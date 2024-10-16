@@ -1,9 +1,9 @@
 ## 세션(Session)
 
+---
+
 세션은 비밀번호 등 클라이언트의 민감한 정보를 브라우저가 아닌 서버 측에 저장하고 관리한다. 서버의 메모리나 로컬 파일 혹은 데이터베이스에 저장하기도 한다. 쿠키에는 세션 ID와 같은 인증 정보를 담아 클라이언트로 보낸다.
-
-![alt text](image.png)
-
+![img.png](img.png)
 - 클라이언트가 ID/PWD로 서버에 로그인을 요청한다.
 - 사용자를 식별할 수 있는 세션 ID를 만들어 세션 저장소에 저장한다.
 - 쿠키에 세션 ID를 담아 클라이언트에 전송한다.
@@ -25,9 +25,11 @@
 
 ## JWT(Json Web Token)
 
+---
+
 JWT는 JSON 객체에 인증에 필요한 정보들을 담은 후 비밀키로 서명한 토큰이다.
 
-![alt text](image-1.png)
+![img_1.png](img_1.png)
 
 - 클라이언트가 ID/PWD로 서버에 로그인을 요청한다.
 - 유효한 ID/PWD라면 Access Token, Refresh Token을 발급하여 쿠키에 담아 전송한다.
@@ -80,7 +82,9 @@ JWT는 Base64로 암호화하기 때문에 쉽게 복호화할 수 있다. 복�
 - 토큰에 정보가 많아져 토큰의 크기가 커지면 네트워크에 부하를 줄 수 있다.
 - 중간에 토큰을 탈취하면 Payload의 데이터를 모두 볼 수 있다.
 
-## ✅ 인증/인가 방식 선택 : 세션 VS 토큰
+## 인증/인가 방식 선택 : 세션 VS 토큰
+
+---
 
 **확장성** 측면에서 세션은 세션 클러스터링, 스티키 세션 등 추가적인 작업이 필요하다. 하지만 토큰은 서버가 직접 인증방식을 저장하지 않고 클라이언트가 저장하는 방식을 취하기 때문에 세션 불일치 문제로부터 자유롭다. HTTP의 Stateless 특성을 그대로 활용할 수 있으며 확장성이 높은 방식이다. **보안성** 측면에서 생각해 볼 때 세션의 경우 모든 정보를 서버에서 관리하기 때문에 토큰에 비해 훨씬 안전하다. 그에 비해 토큰은 한 번 생성하면 서버에서 제어할 수 있는 방법이 없기 때문에 탈취당했을 때 조금 더 복잡한 방식으로 해결할 수 있다. **활용성** 측면에서 생각해보면 세션은 계정 공유 제한, 디바이스별 로그아웃 등 구현 방식에 활용할 수 있다. 프로젝트에서 핵심 기능이 아니라면 이점이 될 수 없지만 말이다.
 
@@ -96,13 +100,13 @@ HTTP 표준에서는 Authentication header를 통한 인증을 기본으로 하
 
 > Authentication: Bearer
 eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI2IiwiaWF0IjoxNzI4OTk0MDE3LCJleHAiOjE3Mjg5OTU4MTcsInR5cGUiOiJBQ0NFU1NfVE9LRU4ifQ.r9B3-Obzxhqm5CzFZhiD9y8zQwEvmH2_TBfsrxoxENvS8RCS0fQrn07u5tjM6okFok0OikkZf1fliwrxUtGe3w
-> 
+>
 
 Authentication Header 를 통해서 전송하기 위해서는 Local storage 혹은 Session storage 에서 관리되어야한다. Javascript 코드를 통해 접근이 가능하기에, XSS 공격에 대해서 취약하고 여러 보안 문제가 발생할 수 있어 선택하지 않았다.
 
 **☑️ Request Body**
 
-Request Body에 인증 정보를 싣어 보내는 방법의 경우 **GET, HEAD, DELETE, TRACE** 와 같은 HTTP Method 에서 사용하지 않는다. GET 요청의 경우 RESTful API 설계 원칙에 따르면 안전성과 멱득성을 보장해야 하며 리소스를 가져오는 목적으로만 사용된다. 즉, GET 요청은 서버의 상태를 변경하지 않아야 하고, 여러 번 실행해도 동일한 결과를 반환해야 하기 때문에 바디값을 사용하지 않는다. HEAD, TRACE같은 요청은 바디값을 사용하지 않기 때문에 넣는 것은 의미가 없다. 따라서 Request Body를 사용하는 것이 안티패턴으로 여겨져 사용하지 않는다.
+Request Body에 인증 정보를 싣어 보내는 방법의 경우 **GET, HEAD, DELETE, TRACE** 와 같은 HTTP Method 에서 사용하지 않는다. GET 요청의 경우 RESTful API 설계 원칙에 따르면 안전성과 멱득성을 보장해야 하며 리소스를 가져오는 목적으로만 사용된다. 즉, GET 요청은 서버의 상태를 변경하지 않아야 하고, 여러 번 실행해도 동일한 결과를 반환해야 하기 때문에 바디값을 사용하지 않는다. HEAD, TRACE같은 요청은 바디값을 사용하지 않기 때문에 넣는 것은 의미가 없다.
 
 **☑️ Cookie**
 
