@@ -1,0 +1,24 @@
+<changelist name="Uncommitted_changes_before_Update_at_2024_10_16_11_50_PM_[Changes]" date="1729090223447" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2024_10_16_11_50_PM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2024/10/16 11:50 PM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/sonarlint/issuestore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/sonarlint/issuestore/5/8/580adbf15150f967e543d14d327b7a7f76ff2c68" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/sonarlint/securityhotspotstore/8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value=".idea/sonarlint/securityhotspotstore/5/8/580adbf15150f967e543d14d327b7a7f76ff2c68" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>
